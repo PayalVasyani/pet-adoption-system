@@ -1,0 +1,274 @@
+{
+  "info": {
+    "_postman_id": "e75cc06c-4d9e-4894-a34e-448b4102869c",
+    "name": "Pet Adoption Management System",
+    "description": "API Collection for Pet Adoption System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "25990198"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Admin\",\n  \"email\": \"admin@test.com\",\n  \"password\": \"123456\",\n  \"role\": \"admin\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@test.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pets",
+      "item": [
+        {
+          "name": "Get Pets (Public)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/pets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "pets"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Pet (Admin)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OGNkN2UxZjYwZGI5ZWI3Njg0Yzc0MiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3MDg5MzA1MSwiZXhwIjoxNzcwOTc5NDUxfQ.EP4Q7veRijE1onqZ27fJHfL4gIHBiATIx-NJrYzs1ZA"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Bruno\",\n    \"species\": \"Dog\",\n    \"breed\": \"Labrador Retriever\",\n    \"age\": 3,\n    \"description\": \"Friendly and playful dog\",\n    \"image\": \"https://images.unsplash.com/photo-1552053831-71594a27632d\"\n  }"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/pets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "pets"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Adoptions",
+      "item": [
+        {
+          "name": "Apply Adoption",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OGNkNzBiZjYwZGI5ZWI3Njg0YzczZCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzcwODk0MDUxLCJleHAiOjE3NzA5ODA0NTF9.IbdC539M-rwjlRi8iqIH8CY3wbeu2BihRWSN_u2snYA"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/adoptions/698daf1e047c7bfd8798f1af",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "adoptions",
+                "698daf1e047c7bfd8798f1af"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get My Adoptions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OGNkNzBiZjYwZGI5ZWI3Njg0YzczZCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzcwODk0MDUxLCJleHAiOjE3NzA5ODA0NTF9.IbdC539M-rwjlRi8iqIH8CY3wbeu2BihRWSN_u2snYA"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/adoptions/my",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "adoptions",
+                "my"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Adoptions (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OGNkN2UxZjYwZGI5ZWI3Njg0Yzc0MiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3MDg5MzA1MSwiZXhwIjoxNzcwOTc5NDUxfQ.EP4Q7veRijE1onqZ27fJHfL4gIHBiATIx-NJrYzs1ZA"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/api/adoptions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "adoptions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Approve/Reject Adoption (Admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OGNkN2UxZjYwZGI5ZWI3Njg0Yzc0MiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3MDg5NDE0NCwiZXhwIjoxNzcwOTgwNTQ0fQ.JhlXIVqQfFYZ2jYmWzWEWTy5xiLWwuw4iZQzCOmxt1s"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"approved\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/adoptions/698db2eeee1d52c4e903f159",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "adoptions",
+                "698db2eeee1d52c4e903f159"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
