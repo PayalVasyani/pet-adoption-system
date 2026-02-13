@@ -1,0 +1,31 @@
+.navbar {
+  background: white;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+
+  a {
+    text-decoration: none;
+    margin-left: 16px;
+    color: $text;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: color .12s, background .12s, transform .12s;
+
+    &.nav-link {
+      color: $text;
+    }
+
+    &.active, &:hover {
+      color: $primary;
+      background: rgba(37,99,235,0.06);
+      transform: translateY(-1px);
+    }
+  }
+
+  @include mobile {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
