@@ -11,6 +11,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Pet Adoption API Running");
+});
+
 app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/api/pets", require("./routes/pet.routes"));
 app.use("/api/adoptions", require("./routes/adoption.routes"));
