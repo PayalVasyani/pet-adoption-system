@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .table-wrapper {
   background: white;
   padding: 24px;
@@ -22,7 +24,7 @@
 .btn--primary {
   background: $primary;
   color: #fff;
-  border-color: darken($primary, 6%);
+  border-color: color.scale($primary, $lightness: -6%);
 }
 
 .btn--ghost,
@@ -46,7 +48,7 @@
 
     &:focus {
       outline: none;
-      border-color: darken(#e6e6e6, 8%);
+      border-color: color.scale(#e6e6e6, $lightness: -8%);
       box-shadow: 0 6px 18px rgba(30,88,158,0.06);
     }
   }
@@ -128,32 +130,67 @@ table {
 }
 
 .pagination {
-  margin-top: 15px;
+  margin-top: 28px;
   display: flex;
-  gap: 10px;
-
+  gap: 16px;
   align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
+  border-radius: 8px;
 
-  button {
-    padding: 8px 12px;
+  &__btn {
+    padding: 10px 18px;
     border-radius: 6px;
-    border: 1px solid #dcdcdc;
+    border: 1px solid #e0e0e0;
     background: #fff;
-    color: #333;
+    color: #444;
     cursor: pointer;
-    box-shadow: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 90px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    letter-spacing: 0.3px;
+
+    &:hover:not(:disabled) {
+      border-color: $primary;
+      background: #fff;
+      color: $primary;
+      box-shadow: 0 4px 12px rgba(30, 136, 229, 0.15);
+      transform: translateY(-2px);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(30, 136, 229, 0.12);
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      color: #999;
+      border-color: #e8e8e8;
+      background: #fafafa;
+
+      &:hover {
+        border-color: #e8e8e8;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        transform: none;
+      }
+    }
   }
 
-  button[disabled] {
-    opacity: .6;
-    cursor: not-allowed;
-  }
-
-  /* active/primary pager button look */
-  button.primary {
-    background: $primary;
-    color: #fff;
-    border-color: darken($primary, 6%);
+  &__info {
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+    padding: 8px 12px;
+    background: rgba(30, 136, 229, 0.06);
+    border-radius: 4px;
+    min-width: 120px;
+    text-align: center;
+    letter-spacing: 0.3px;
   }
 }
 
@@ -242,8 +279,24 @@ table {
   }
 
   .pagination {
-    flex-direction: column;
-    gap: 6px;
+    flex-direction: row;
+    gap: 10px;
     align-items: center;
+    justify-content: center;
+    padding: 12px;
+    margin-top: 20px;
+
+    &__btn {
+      padding: 8px 12px;
+      font-size: 13px;
+      min-width: 70px;
+      flex: 0 1 auto;
+    }
+
+    &__info {
+      font-size: 12px;
+      min-width: 100px;
+      padding: 6px 10px;
+    }
   }
 }

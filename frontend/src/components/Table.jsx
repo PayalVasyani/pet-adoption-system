@@ -43,8 +43,23 @@ const Table = ({ data, columns }) => {
       </table>
 
       <div className="pagination">
-        <button onClick={()=>setPage(p=>Math.max(p-1,1))}>Prev</button>
-        <button onClick={()=>setPage(p=>p+1)}>Next</button>
+        <button 
+          className="pagination__btn pagination__btn--prev"
+          onClick={()=>setPage(p=>Math.max(p-1,1))}
+          disabled={page === 1}
+        >
+          ← Prev
+        </button>
+        <span className="pagination__info">
+          Page {page} of {Math.ceil(filtered.length / perPage)}
+        </span>
+        <button 
+          className="pagination__btn pagination__btn--next"
+          onClick={()=>setPage(p=>p+1)}
+          disabled={page >= Math.ceil(filtered.length / perPage)}
+        >
+          Next →
+        </button>
       </div>
     </div>
   );

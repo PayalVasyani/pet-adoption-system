@@ -106,13 +106,6 @@ const Home = () => {
           <option value="">All breeds</option>
           {availableBreeds.map(b => <option key={b} value={b}>{b}</option>)}
         </select>
-
-        <select value={age} onChange={e=>{setAge(e.target.value); setPage(1);}}>
-          <option value="">Any age</option>
-          <option value="0">0-1</option>
-          <option value="1">1-3</option>
-          <option value="3">3+</option>
-        </select>
       </div>
 
       {loading ? <p>Loading pets...</p> : (
@@ -123,10 +116,22 @@ const Home = () => {
         </div>
       )}
 
-      <div style={{display: 'flex', justifyContent: 'center', gap: 8, marginTop: 18}}>
-        <button disabled={page<=1} onClick={()=>setPage(prev=>Math.max(1, prev-1))}>Prev</button>
-        <span style={{alignSelf:'center'}}>Page {page} / {totalPages}</span>
-        <button disabled={page>=totalPages} onClick={()=>setPage(prev=>Math.min(totalPages, prev+1))}>Next</button>
+      <div className="pagination">
+        <button 
+          className="pagination__btn pagination__btn--prev"
+          disabled={page <= 1} 
+          onClick={() => setPage(prev => Math.max(1, prev - 1))}
+        >
+          ← Prev
+        </button>
+        <span className="pagination__info">Page {page} of {totalPages}</span>
+        <button 
+          className="pagination__btn pagination__btn--next"
+          disabled={page >= totalPages} 
+          onClick={() => setPage(prev => Math.min(totalPages, prev + 1))}
+        >
+          Next →
+        </button>
       </div>
 
       {selectedPet && (

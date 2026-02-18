@@ -102,6 +102,14 @@ http://localhost:3000
 
 ---
 
+## API Documentation
+
+Postman collection available in:
+docs/postman/pet-adoption-postman.json
+
+Import into Postman to test APIs.
+
+
 ## 👩‍💻 Author
 
 **Payal Vasyani**

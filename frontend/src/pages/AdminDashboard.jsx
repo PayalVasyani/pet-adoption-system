@@ -101,10 +101,22 @@ const AdminDashboard = () => {
             </tbody>
           </table>
 
-          <div className="pagination" style={{justifyContent:'center', marginTop:12}}>
-            <button disabled={page<=1} onClick={()=>setPage(p=>Math.max(1,p-1))}>Prev</button>
-            <div style={{alignSelf:'center'}}>{page} / {totalPages}</div>
-            <button disabled={page>=totalPages} onClick={()=>setPage(p=>Math.min(totalPages,p+1))}>Next</button>
+          <div className="pagination">
+            <button 
+              className="pagination__btn pagination__btn--prev"
+              disabled={page <= 1} 
+              onClick={() => setPage(p => Math.max(1, p - 1))}
+            >
+              ← Prev
+            </button>
+            <span className="pagination__info">Page {page} of {totalPages}</span>
+            <button 
+              className="pagination__btn pagination__btn--next"
+              disabled={page >= totalPages} 
+              onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+            >
+              Next →
+            </button>
           </div>
         </div>
       </section>
